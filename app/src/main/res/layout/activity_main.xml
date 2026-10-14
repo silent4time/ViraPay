@@ -1,155 +1,123 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="#F5F7FA"
+    android:padding="20dp">
 
     <LinearLayout
-        android:id="@+id/layoutLogin"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:gravity="center"
+        android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:padding="24dp">
+        android:gravity="center_horizontal">
+
+        <!-- لوگوی ویراپی -->
+        <ImageView
+            android:layout_width="90dp"
+            android:layout_height="90dp"
+            android:src="@drawable/virapay_logo"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="8dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="درگاه هوشمند ویراپی"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:textColor="#1A202C"
+            android:layout_marginBottom="24dp" />
+
+        <!-- تنظیمات اتصال -->
+        <EditText
+            android:id="@+id/etApiId"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:hint="شناسه تلگرام (Telegram API ID)"
+            android:inputType="number"
+            android:background="@drawable/bg_input"
+            android:paddingHorizontal="16dp"
+            android:layout_marginBottom="12dp"/>
 
         <EditText
-            android:id="@+id/etPasscode"
+            android:id="@+id/etApiHash"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="@string/passcode_hint"
-            android:inputType="numberPassword"
-            android:textDirection="ltr" />
+            android:layout_height="50dp"
+            android:hint="کد امنیتی (API Hash)"
+            android:background="@drawable/bg_input"
+            android:paddingHorizontal="16dp"
+            android:layout_marginBottom="12dp"/>
 
         <EditText
-            android:id="@+id/etPasscodeConfirm"
+            android:id="@+id/etPhone"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="@string/confirm_pin_hint"
-            android:inputType="numberPassword"
-            android:textDirection="ltr"
-            android:visibility="gone" />
+            android:layout_height="50dp"
+            android:hint="شماره موبایل (+98...)"
+            android:inputType="phone"
+            android:background="@drawable/bg_input"
+            android:paddingHorizontal="16dp"
+            android:layout_marginBottom="12dp"/>
+
+        <EditText
+            android:id="@+id/etCardAndBank"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:text="5041721205119325:ResalatBank"
+            android:hint="شماره کارت:نام بانک"
+            android:background="@drawable/bg_input"
+            android:paddingHorizontal="16dp"
+            android:layout_marginBottom="12dp"/>
+
+        <EditText
+            android:id="@+id/etBotUsername"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:text="silentping_vpn_bot"
+            android:hint="یوزرنیم ربات تلگرام"
+            android:background="@drawable/bg_input"
+            android:paddingHorizontal="16dp"
+            android:layout_marginBottom="20dp"/>
+
+        <!-- دکمه‌های کنترل -->
+        <Button
+            android:id="@+id/btnStart"
+            android:layout_width="match_parent"
+            android:layout_height="55dp"
+            android:text="🚀 روشن کردن درگاه خودکار"
+            android:textColor="#FFFFFF"
+            android:backgroundTint="#2B6CB0"
+            android:textStyle="bold"
+            android:layout_marginBottom="12dp"/>
 
         <Button
-            android:id="@+id/btnLogin"
+            android:id="@+id/btnStop"
+            android:layout_width="match_parent"
+            android:layout_height="55dp"
+            android:text="⏹ خاموش کردن درگاه"
+            android:textColor="#FFFFFF"
+            android:backgroundTint="#E53E3E"
+            android:textStyle="bold"
+            android:layout_marginBottom="20dp"/>
+
+        <!-- گزارشات زنده -->
+        <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/login" />
-    </LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/layoutMain"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:padding="16dp"
-        android:visibility="gone">
-
-        <ScrollView
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1">
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical">
-
-                <EditText
-                    android:id="@+id/etApiId"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:hint="@string/api_id_hint"
-                    android:inputType="number"
-                    android:textDirection="ltr" />
-
-                <EditText
-                    android:id="@+id/etApiHash"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:hint="@string/api_hash_hint"
-                    android:inputType="text"
-                    android:textDirection="ltr" />
-
-                <EditText
-                    android:id="@+id/etPhone"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:hint="@string/phone_hint"
-                    android:inputType="phone"
-                    android:textDirection="ltr" />
-
-                <EditText
-                    android:id="@+id/etBankCards"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:hint="@string/bank_cards_hint"
-                    android:inputType="text"
-                    android:textDirection="ltr" />
-
-                <EditText
-                    android:id="@+id/etBotUsernames"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:hint="@string/bots_hint"
-                    android:inputType="text"
-                    android:textDirection="ltr" />
-
-                <EditText
-                    android:id="@+id/etOtpCode"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:hint="@string/otp_hint"
-                    android:inputType="text"
-                    android:textDirection="ltr" />
-
-                <Button
-                    android:id="@+id/btnSendCode"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="@string/send_code" />
-
-                <Button
-                    android:id="@+id/btnVerifyCode"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="@string/verify_code" />
-
-                <Button
-                    android:id="@+id/btnStartService"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="@string/start_service" />
-
-                <Button
-                    android:id="@+id/btnStopService"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="@string/stop_service" />
-
-                <EditText
-                    android:id="@+id/etNewPin"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="16dp"
-                    android:hint="@string/new_pin_hint"
-                    android:inputType="numberPassword"
-                    android:textDirection="ltr" />
-
-                <Button
-                    android:id="@+id/btnChangePin"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="@string/change_pin" />
-            </LinearLayout>
-        </ScrollView>
+            android:text="گزارشات تراکنش‌ها و تاییدها:"
+            android:textStyle="bold"
+            android:textColor="#4A5568"
+            android:layout_marginBottom="6dp"/>
 
         <TextView
             android:id="@+id/tvLogs"
             android:layout_width="match_parent"
-            android:layout_height="200dp"
-            android:layout_marginTop="8dp"
-            android:background="#11000000"
-            android:padding="8dp"
+            android:layout_height="180dp"
+            android:background="#EDF2F7"
+            android:padding="12dp"
+            android:textColor="#2D3748"
+            android:textSize="12sp"
             android:scrollbars="vertical"
-            android:textSize="12sp" />
+            android:text="سیستم آماده راه‌اندازی است...\n"/>
+
     </LinearLayout>
-</FrameLayout>
+</ScrollView>
