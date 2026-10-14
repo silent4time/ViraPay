@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">ویراپِی</string>
+    <string name="passcode_hint">رمز عبور</string>
+    <string name="login">ورود</string>
+    <string name="api_id_hint">API ID تلگرام</string>
+    <string name="api_hash_hint">API Hash تلگرام</string>
+    <string name="phone_hint">شماره تلفن (+98...)</string>
+    <string name="bank_cards_hint">کارت‌ها (شماره‌کارت:سرشماره، با کاما جدا کنید)</string>
+    <string name="bots_hint">یوزرنیم ربات‌ها (با کاما جدا کنید)</string>
+    <string name="otp_hint">کد ورود (با رمز دوم: کد رمز)</string>
+    <string name="send_code">ارسال کد</string>
+    <string name="verify_code">تایید کد</string>
+    <string name="start_service">فعال‌سازی درگاه</string>
+    <string name="confirm_pin_hint">تکرار رمز عبور</string>
+    <string name="set_pin">ثبت رمز عبور</string>
+    <string name="new_pin_hint">رمز جدید (حداقل ۴ رقم)</string>
+    <string name="change_pin">تغییر رمز عبور</string>
+    <string name="stop_service">توقف درگاه</string>
+    <string name="gateway_running">درگاه در حال اجراست</string>
+    <string name="pin_short">رمز باید حداقل ۴ رقم باشد</string>
+    <string name="pin_mismatch">رمزها یکسان نیستند</string>
+    <string name="pin_wrong">رمز اشتباه است</string>
+    <string name="pin_locked">تلاش بیش از حد، ۳۰ ثانیه صبر کنید</string>
+    <string name="pin_changed">رمز عبور تغییر کرد</string>
+</resources>

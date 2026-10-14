@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:id="@+id/layoutLogin"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:padding="24dp">
+
+        <EditText
+            android:id="@+id/etPasscode"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/passcode_hint"
+            android:inputType="numberPassword"
+            android:textDirection="ltr" />
+
+        <EditText
+            android:id="@+id/etPasscodeConfirm"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/confirm_pin_hint"
+            android:inputType="numberPassword"
+            android:textDirection="ltr"
+            android:visibility="gone" />
+
+        <Button
+            android:id="@+id/btnLogin"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/login" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/layoutMain"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:padding="16dp"
+        android:visibility="gone">
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <EditText
+                    android:id="@+id/etApiId"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/api_id_hint"
+                    android:inputType="number"
+                    android:textDirection="ltr" />
+
+                <EditText
+                    android:id="@+id/etApiHash"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/api_hash_hint"
+                    android:inputType="text"
+                    android:textDirection="ltr" />
+
+                <EditText
+                    android:id="@+id/etPhone"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/phone_hint"
+                    android:inputType="phone"
+                    android:textDirection="ltr" />
+
+                <EditText
+                    android:id="@+id/etBankCards"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/bank_cards_hint"
+                    android:inputType="text"
+                    android:textDirection="ltr" />
+
+                <EditText
+                    android:id="@+id/etBotUsernames"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/bots_hint"
+                    android:inputType="text"
+                    android:textDirection="ltr" />
+
+                <EditText
+                    android:id="@+id/etOtpCode"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/otp_hint"
+                    android:inputType="text"
+                    android:textDirection="ltr" />
+
+                <Button
+                    android:id="@+id/btnSendCode"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/send_code" />
+
+                <Button
+                    android:id="@+id/btnVerifyCode"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/verify_code" />
+
+                <Button
+                    android:id="@+id/btnStartService"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/start_service" />
+
+                <Button
+                    android:id="@+id/btnStopService"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/stop_service" />
+
+                <EditText
+                    android:id="@+id/etNewPin"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:hint="@string/new_pin_hint"
+                    android:inputType="numberPassword"
+                    android:textDirection="ltr" />
+
+                <Button
+                    android:id="@+id/btnChangePin"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/change_pin" />
+            </LinearLayout>
+        </ScrollView>
+
+        <TextView
+            android:id="@+id/tvLogs"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:layout_marginTop="8dp"
+            android:background="#11000000"
+            android:padding="8dp"
+            android:scrollbars="vertical"
+            android:textSize="12sp" />
+    </LinearLayout>
+</FrameLayout>
