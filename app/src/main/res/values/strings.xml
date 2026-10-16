@@ -1,26 +1,166 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">ViraPay</string>
-    <string name="passcode_hint">Passcode</string>
-    <string name="login">Login</string>
-    <string name="api_id_hint">Telegram API ID</string>
-    <string name="api_hash_hint">Telegram API Hash</string>
-    <string name="phone_hint">Phone (+98...)</string>
-    <string name="bank_cards_hint">Cards (card:SenderHint, comma separated)</string>
-    <string name="bots_hint">Bot usernames (comma separated)</string>
-    <string name="otp_hint">Code (2FA: CODE PASSWORD)</string>
-    <string name="send_code">Send Code</string>
-    <string name="verify_code">Verify Code</string>
-    <string name="start_service">Start Gateway</string>
-    <string name="confirm_pin_hint">Confirm passcode</string>
-    <string name="set_pin">Set Passcode</string>
-    <string name="new_pin_hint">New passcode (min 4 digits)</string>
-    <string name="change_pin">Change Passcode</string>
-    <string name="stop_service">Stop Gateway</string>
-    <string name="gateway_running">Gateway is running</string>
-    <string name="pin_short">Passcode must be at least 4 digits</string>
-    <string name="pin_mismatch">Passcodes do not match</string>
-    <string name="pin_wrong">Incorrect passcode</string>
-    <string name="pin_locked">Too many attempts, wait 30 seconds</string>
-    <string name="pin_changed">Passcode changed</string>
+    <string name="app_name">ویراپِی</string>
+    <string name="app_tagline">درگاه هوشمند تایید کارت‌به‌کارت</string>
+    <string name="back">بازگشت</string>
+    <string name="settings">تنظیمات</string>
+    <string name="status_running">فعال</string>
+    <string name="status_stopped">متوقف</string>
+
+    <!-- Dashboard -->
+    <string name="start_service">روشن کردن درگاه</string>
+    <string name="stop_service">خاموش کردن</string>
+    <string name="section_connection">📡 وضعیت اتصال</string>
+    <string name="conn_telegram">تلگرام</string>
+    <string name="conn_sms">دسترسی پیامک</string>
+    <string name="conn_bots">ربات‌های تعریف‌شده</string>
+    <string name="conn_cards">کارت‌های تعریف‌شده</string>
+    <string name="conn_license">لایسنس</string>
+    <string name="conn_connected">متصل</string>
+    <string name="conn_connecting">در حال اتصال…</string>
+    <string name="conn_error">خطا</string>
+    <string name="conn_off">قطع</string>
+    <string name="sms_granted">مجاز</string>
+    <string name="sms_missing">نیاز به دسترسی</string>
+    <string name="section_stats">📊 آمار تراکنش‌ها</string>
+    <string name="stat_total">کل</string>
+    <string name="stat_ok">تایید شده</string>
+    <string name="stat_fail">ناموفق</string>
+    <string name="stats_empty">هنوز ربات یا کارتی تعریف نشده است.</string>
+    <string name="stat_counts">%1$d موفق · %2$d ناموفق</string>
+    <string name="stat_card_count">%1$d تراکنش</string>
+    <string name="section_logs">📋 گزارش زنده</string>
+    <string name="clear_logs">پاک کردن</string>
+    <string name="logs_empty">سیستم آماده راه‌اندازی است…</string>
+    <string name="gateway_running">درگاه در حال اجراست</string>
+    <string name="need_telegram">ابتدا وارد تلگرام شوید</string>
+    <string name="need_bot">ابتدا یک ربات تعریف کنید</string>
+    <string name="need_card">ابتدا برای ربات یک کارت تعریف کنید</string>
+    <string name="already_running">درگاه از قبل روشن است</string>
+    <string name="sms_permission_needed">برای تایید پرداخت، دسترسی خواندن پیامک لازم است</string>
+    <string name="log_starting">🚀 در حال روشن کردن درگاه…</string>
+    <string name="log_stopping">⏹ درخواست توقف درگاه ارسال شد</string>
+    <string name="log_license_limited">⚠️ نسخه رایگان: فقط اولین ربات و اولین کارت فعال می‌شود</string>
+
+    <!-- PIN -->
+    <string name="pin_title_unlock">رمز عبور را وارد کنید</string>
+    <string name="pin_title_set">یک رمز عبور (۴ تا ۶ رقم) تعیین کنید</string>
+    <string name="pin_hint">رمز عبور</string>
+    <string name="old_pin_hint">رمز فعلی</string>
+    <string name="new_pin_hint">رمز جدید (۴ تا ۶ رقم)</string>
+    <string name="confirm_pin_hint">تکرار رمز جدید</string>
+    <string name="unlock">ورود</string>
+    <string name="set_pin">ثبت رمز</string>
+    <string name="change_pin">تغییر رمز عبور</string>
+    <string name="exit">خروج</string>
+    <string name="pin_short">رمز باید ۴ تا ۶ رقم عددی باشد</string>
+    <string name="pin_mismatch">رمزها یکسان نیستند</string>
+    <string name="pin_wrong">رمز اشتباه است</string>
+    <string name="pin_locked">تلاش بیش از حد؛ ۳۰ ثانیه صبر کنید</string>
+    <string name="pin_changed">رمز عبور تغییر کرد</string>
+
+    <!-- Common -->
+    <string name="save">ذخیره</string>
+    <string name="cancel">انصراف</string>
+    <string name="edit">ویرایش</string>
+    <string name="delete">حذف</string>
+    <string name="send">ارسال</string>
+    <string name="no_app_found">برنامه‌ی مناسبی پیدا نشد</string>
+
+    <!-- Settings list -->
+    <string name="settings_telegram_sub">ورود به حساب تلگرام</string>
+    <string name="settings_count_bots">%1$d ربات تعریف شده</string>
+    <string name="settings_count_cards">%1$d کارت تعریف شده</string>
+    <string name="settings_pin_sub">رمز ۴ تا ۶ رقمی ورود به برنامه</string>
+    <string name="settings_about_sub">سازنده، گزارش خطا، پیام به سازنده</string>
+
+    <!-- Telegram -->
+    <string name="section_telegram">🔐 اتصال به تلگرام</string>
+    <string name="telegram_help">اطلاعات API را از my.telegram.org بگیرید. ورود فقط یک‌بار لازم است.</string>
+    <string name="api_id_hint">API ID تلگرام</string>
+    <string name="api_hash_hint">API Hash تلگرام</string>
+    <string name="phone_hint">شماره موبایل (+98…)</string>
+    <string name="send_code">ارسال کد ورود</string>
+    <string name="otp_hint">کد ورود (با رمز دوم: کد رمز)</string>
+    <string name="verify_code">تایید کد</string>
+    <string name="fill_telegram">API ID، API Hash و شماره موبایل را کامل وارد کنید</string>
+    <string name="fill_otp">کد ورود را وارد کنید</string>
+
+    <!-- Bots -->
+    <string name="bots_title">🤖 مدیریت ربات‌ها</string>
+    <string name="add_bot">افزودن ربات</string>
+    <string name="edit_bot">ویرایش ربات</string>
+    <string name="bots_screen_help">هر ربات می‌تواند چند کارت داشته باشد. کارت‌ها را در بخش «مدیریت کارت‌ها» به ربات اختصاص دهید.</string>
+    <string name="bots_empty">هنوز رباتی تعریف نشده است</string>
+    <string name="bot_id_hint">آیدی عددی ربات</string>
+    <string name="bot_username_hint">نام کاربری ربات</string>
+    <string name="bot_username_helper">بدون @ ؛ باید به bot ختم شود</string>
+    <string name="bot_admin_hint">نام کاربری ادمین</string>
+    <string name="bot_line_id">آیدی ربات: %1$s</string>
+    <string name="bot_line_admin">ادمین: @%1$s</string>
+    <string name="bot_line_cards">%1$d کارت متصل</string>
+    <string name="delete_bot_title">حذف ربات</string>
+    <string name="delete_bot_message">ربات @%1$s و %2$d کارت متصل به آن حذف شود؟</string>
+    <string name="err_bot_id">آیدی عددی ربات را وارد کنید</string>
+    <string name="err_bot_username">نام کاربری معتبر نیست (۵ تا ۳۲ حرف انگلیسی و باید به bot ختم شود)</string>
+    <string name="err_bot_duplicate">این ربات قبلاً اضافه شده است</string>
+    <string name="err_admin_username">نام کاربری ادمین معتبر نیست</string>
+    <string name="limit_bots">در نسخه رایگان فقط یک ربات مجاز است</string>
+
+    <!-- Cards -->
+    <string name="cards_title">💳 مدیریت کارت‌ها</string>
+    <string name="add_card">افزودن کارت</string>
+    <string name="edit_card">ویرایش کارت</string>
+    <string name="cards_screen_help">هر کارت فقط به یک ربات اختصاص داده می‌شود. نمونه پیامک بانک برای تشخیص قالب واریز استفاده می‌شود.</string>
+    <string name="cards_empty">هنوز کارتی تعریف نشده است</string>
+    <string name="card_number_hint">شماره کارت (۱۶ رقم)</string>
+    <string name="card_holder_hint">نام دارنده کارت</string>
+    <string name="card_sender_hint">سرشماره پیامک بانک</string>
+    <string name="card_sender_helper">همان نامی که در برنامه پیامک می‌بینید؛ مثلاً 3000xxxx یا Resalat</string>
+    <string name="card_sample_hint">نمونه پیامک واریز بانک</string>
+    <string name="card_sample_helper">یک پیامک واقعی واریز را عیناً کپی کنید</string>
+    <string name="card_bot_label">ربات مربوط به این کارت</string>
+    <string name="card_line_holder">دارنده: %1$s</string>
+    <string name="card_line_sender">سرشماره پیامک: %1$s</string>
+    <string name="card_line_bot">ربات: @%1$s</string>
+    <string name="delete_card_title">حذف کارت</string>
+    <string name="delete_card_message">کارت پایان %1$s حذف شود؟</string>
+    <string name="err_card_number">شماره کارت باید ۱۶ رقم باشد</string>
+    <string name="err_card_duplicate">این کارت قبلاً برای یک ربات تعریف شده است</string>
+    <string name="err_card_holder">نام دارنده کارت را وارد کنید</string>
+    <string name="err_card_sender">سرشماره پیامک را وارد کنید</string>
+    <string name="err_card_sample">نمونه پیامک باید مبلغ واریز را شامل شود</string>
+    <string name="need_bot_first">ابتدا یک ربات تعریف کنید</string>
+    <string name="limit_cards">در نسخه رایگان فقط یک کارت مجاز است</string>
+
+    <!-- About -->
+    <string name="about_title">ℹ️ درباره نرم‌افزار</string>
+    <string name="about_version">نسخه %1$s</string>
+    <string name="about_builder">سازنده</string>
+    <string name="about_desc">ویراپِی پرداخت‌های کارت‌به‌کارت ربات‌های فروشگاهی تلگرام را از روی پیامک بانک تایید می‌کند. اطلاعات شما فقط روی همین گوشی ذخیره می‌شود.</string>
+    <string name="report_bug">گزارش خطا</string>
+    <string name="report_via_apps">ارسال گزارش به‌همراه لاگ‌های اخیر</string>
+    <string name="report_via_github">ثبت در گیت‌هاب</string>
+    <string name="message_builder">پیام به سازنده</string>
+    <string name="message_hint">پیام شما</string>
+    <string name="message_empty">متن پیام را بنویسید</string>
+    <string name="open_telegram">تلگرام سازنده</string>
+    <string name="open_github">صفحه پروژه در گیت‌هاب</string>
+
+    <!-- License (built, not active yet) -->
+    <string name="section_license">🛡️ لایسنس</string>
+    <string name="license_help">نسخه رایگان یک ربات و یک کارت دارد. با ثبت لایسنس، برنامه فقط روی همین دستگاه به‌صورت نامحدود فعال می‌شود.</string>
+    <string name="license_status">وضعیت</string>
+    <string name="license_active">فعال (نامحدود)</string>
+    <string name="license_free">رایگان (۱ ربات، ۱ کارت)</string>
+    <string name="license_device">شناسه دستگاه: %1$s</string>
+    <string name="license_key_hint">کد لایسنس</string>
+    <string name="license_activate">فعال‌سازی</string>
+    <string name="license_enter_key">کد لایسنس را وارد کنید</string>
+    <string name="license_ok">لایسنس با موفقیت فعال شد</string>
+    <string name="license_err_invalid">کد لایسنس نامعتبر است</string>
+    <string name="license_err_used">این لایسنس روی دستگاه دیگری فعال شده است</string>
+    <string name="license_err_revoked">این لایسنس لغو شده است</string>
+    <string name="license_err_network">ارتباط با سرور برقرار نشد</string>
+    <string name="license_err_generic">خطا در فعال‌سازی لایسنس</string>
 </resources>

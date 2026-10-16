@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="vp_primary">#1E4FA3</color>
+    <color name="vp_cyan">#2DB5E1</color>
+    <color name="vp_gold">#E5B567</color>
+    <color name="vp_bg">#F3F6FB</color>
+    <color name="vp_card">#FFFFFF</color>
+    <color name="vp_text">#14213D</color>
+    <color name="vp_text_secondary">#5B6B85</color>
+    <color name="vp_stroke">#DCE3EF</color>
+    <color name="vp_outline">#B8C4D9</color>
+    <color name="vp_success">#1FA971</color>
+    <color name="vp_error">#D64545</color>
+    <color name="vp_idle">#FFB4B4</color>
+    <color name="vp_log_bg">#0E1A2E</color>
+    <color name="vp_log_text">#BFE9FF</color>
+    <color name="header_start">#1B3F95</color>
+    <color name="header_end">#2FA9DB</color>
+    <color name="vp_icon_bg">#E8EFFB</color>
+</resources>

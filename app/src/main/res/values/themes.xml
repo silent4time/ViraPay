@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="Theme.ViraPay" parent="Theme.Material3.DayNight.NoActionBar">
+        <item name="colorPrimary">@color/vp_primary</item>
+        <item name="colorOnPrimary">@android:color/white</item>
+        <item name="colorSecondary">@color/vp_cyan</item>
+        <item name="colorError">@color/vp_error</item>
+        <item name="colorSurface">@color/vp_card</item>
+        <item name="colorOnSurface">@color/vp_text</item>
+        <item name="colorOutline">@color/vp_outline</item>
+        <item name="android:colorBackground">@color/vp_bg</item>
+        <item name="android:statusBarColor">@color/header_start</item>
+        <item name="android:windowLightStatusBar">false</item>
+        <item name="android:navigationBarColor">@color/vp_bg</item>
+    </style>
+</resources>

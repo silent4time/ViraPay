@@ -24,6 +24,10 @@ class GatewayService : Service() {
 
         @Volatile
         var running = false
+
+        /** idle | connecting | connected | error */
+        @Volatile
+        var connection = "idle"
     }
 
     override fun onBind(intent: Intent?): IBinder? = null
@@ -42,30 +46,37 @@ class GatewayService : Service() {
 
         if (running) return START_STICKY
 
-        // Settings come from prefs so a system restart (null intent) still works
+        // Settings come from storage so a system restart (null intent) still works
         val prefs = getSharedPreferences("ViraPayPrefs", Context.MODE_PRIVATE)
         val apiId = prefs.getString("api_id", "")?.toIntOrNull()
         val apiHash = prefs.getString("api_hash", "") ?: ""
-        val cards = prefs.getString("bank_cards", "") ?: ""
-        val bots = prefs.getString("bot_usernames", "") ?: ""
         if (apiId == null || apiHash.isEmpty()) {
             LogBus.append("❌ Telegram credentials missing. / اطلاعات تلگرام ناقص است.")
             stopSelf()
             return START_NOT_STICKY
         }
+        val config = Store.configJson(this, LicenseManager.maxBots(this), LicenseManager.maxCards(this))
+        if (org.json.JSONObject(config).getJSONArray("bots").length() == 0) {
+            LogBus.append("❌ No bot with a card is defined. / ربات یا کارت تعریف نشده است.")
+            stopSelf()
+            return START_NOT_STICKY
+        }
 
         running = true
+        connection = "connecting"
         val service = this
         thread {
             try {
                 if (!Python.isStarted()) Python.start(AndroidPlatform(applicationContext))
                 Python.getInstance().getModule("virapay_engine").callAttr(
-                    "start_gateway_loop", service, filesDir.absolutePath, apiId, apiHash, cards, bots
+                    "start_gateway_loop", service, filesDir.absolutePath, apiId, apiHash, config
                 )
             } catch (e: Exception) {
+                connection = "error"
                 LogBus.append("❌ Service error: ${e.message}")
             } finally {
                 running = false
+                if (connection != "error") connection = "idle"
                 LogBus.append("🔴 Gateway stopped. / درگاه متوقف شد.")
                 stopSelf()
             }
@@ -84,10 +95,19 @@ class GatewayService : Service() {
         super.onDestroy()
     }
 
-    // Called from Python (virapay_engine.py)
+    // ---- Called from Python (virapay_engine.py) ----
+
     fun appendLog(msg: String) = LogBus.append(msg)
 
     fun getSmsInboxJson(): String = SmsReader.readInboxJson(this)
+
+    fun setConnection(state: String) {
+        connection = state
+    }
+
+    fun recordTransaction(bot: String, card: String, rial: Long, ok: Boolean) {
+        Stats.record(applicationContext, bot, card, rial, ok)
+    }
 
     private fun buildNotification(): Notification {
         if (Build.VERSION.SDK_INT >= 26) {

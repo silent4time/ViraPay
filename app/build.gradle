@@ -12,8 +12,8 @@ android {
         applicationId "ir.virapay.app"
         minSdk 24
         targetSdk 34
-        versionCode 1
-        versionName "1.0"
+        versionCode 3
+        versionName "1.2"
 
         ndk {
             abiFilters "arm64-v8a", "armeabi-v7a"
@@ -23,6 +23,27 @@ android {
             version "3.11"
             pip {
                 install "telethon==1.36.0"
+            }
+        }
+    }
+
+    signingConfigs {
+        release {
+            def ks = System.getenv('VIRAPAY_KEYSTORE')
+            if (ks) {
+                storeFile file(ks)
+                storePassword System.getenv('VIRAPAY_KS_PASS')
+                keyAlias System.getenv('VIRAPAY_KEY_ALIAS')
+                keyPassword System.getenv('VIRAPAY_KEY_PASS')
+            }
+        }
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            if (System.getenv('VIRAPAY_KEYSTORE')) {
+                signingConfig signingConfigs.release
             }
         }
     }
@@ -39,4 +60,68 @@ android {
 dependencies {
     implementation 'androidx.core:core-ktx:1.12.0'
     implementation 'androidx.appcompat:appcompat:1.6.1'
+    implementation 'com.google.android.material:material:1.12.0'
 }
+
+
+// ---------------------------------------------------------------------------
+// Vazirmatn font: downloaded into res/font before every build (skipped when the
+// files already exist, so you may also commit them). If the download fails the
+// build still succeeds and the app simply uses the system font.
+// ---------------------------------------------------------------------------
+def fontDir = file('src/main/res/font')
+def fontSources = [
+    'vazirmatn_regular.ttf': [
+        'https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@master/fonts/ttf/Vazirmatn-Regular.ttf',
+        'https://github.com/rastikerdar/vazirmatn/raw/master/fonts/ttf/Vazirmatn-Regular.ttf'
+    ],
+    'vazirmatn_bold.ttf': [
+        'https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@master/fonts/ttf/Vazirmatn-Bold.ttf',
+        'https://github.com/rastikerdar/vazirmatn/raw/master/fonts/ttf/Vazirmatn-Bold.ttf'
+    ]
+]
+
+tasks.register('downloadFonts') {
+    doLast {
+        fontDir.mkdirs()
+        def allOk = true
+        fontSources.each { name, urls ->
+            def target = new File(fontDir, name)
+            if (target.exists() && target.length() > 20000) return
+            boolean ok = false
+            for (u in urls) {
+                try {
+                    def conn = new URL(u).openConnection()
+                    conn.connectTimeout = 15000
+                    conn.readTimeout = 60000
+                    conn.instanceFollowRedirects = true
+                    target.bytes = conn.getInputStream().bytes
+                    if (target.length() > 20000) { ok = true; break }
+                } catch (Exception e) {
+                    logger.warn("Font download failed from ${u}: ${e}")
+                }
+            }
+            if (!ok) { target.delete(); allOk = false }
+        }
+        def family = new File(fontDir, 'vazirmatn.xml')
+        if (allOk) {
+            family.text = """<?xml version="1.0" encoding="utf-8"?>
+<font-family xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <font android:fontStyle="normal" android:fontWeight="400" android:font="@font/vazirmatn_regular"
+        app:fontStyle="normal" app:fontWeight="400" app:font="@font/vazirmatn_regular" />
+    <font android:fontStyle="normal" android:fontWeight="700" android:font="@font/vazirmatn_bold"
+        app:fontStyle="normal" app:fontWeight="700" app:font="@font/vazirmatn_bold" />
+</font-family>
+"""
+        } else {
+            // never leave a half-configured font family behind (it would break resource linking)
+            family.delete()
+            new File(fontDir, 'vazirmatn_regular.ttf').delete()
+            new File(fontDir, 'vazirmatn_bold.ttf').delete()
+            logger.warn("Vazirmatn could not be downloaded: building with the system font.")
+        }
+    }
+}
+
+tasks.matching { it.name == 'preBuild' }.configureEach { dependsOn 'downloadFonts' }

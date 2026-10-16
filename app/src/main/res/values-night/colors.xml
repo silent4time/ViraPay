@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="vp_primary">#3F7FE0</color>
+    <color name="vp_bg">#0B1320</color>
+    <color name="vp_card">#131F33</color>
+    <color name="vp_text">#EAF0FA</color>
+    <color name="vp_text_secondary">#9FB0CC</color>
+    <color name="vp_stroke">#26354F</color>
+    <color name="vp_outline">#3A4C6B</color>
+    <color name="vp_log_bg">#070E1A</color>
+    <color name="vp_icon_bg">#1B2B47</color>
+</resources>

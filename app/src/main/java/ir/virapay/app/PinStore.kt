@@ -11,6 +11,9 @@ import javax.crypto.spec.PBEKeySpec
 object PinStore {
     private const val ITERATIONS = 50000
 
+    /** PIN must be 4 to 6 digits. */
+    fun isValid(pin: String): Boolean = pin.length in 4..6 && pin.all { it in '0'..'9' }
+
     fun isSet(prefs: SharedPreferences): Boolean = prefs.contains("pin_hash") && prefs.contains("pin_salt")
 
     fun set(prefs: SharedPreferences, pin: String) {
